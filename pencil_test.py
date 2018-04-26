@@ -47,4 +47,11 @@ class PencilTest(unittest.TestCase):
         pencil.write(text)
         self.assertEqual(text, pencil.read())
 
+    def test_when_pencil_is_sharpened_it_regains_full_durability(self):
+        pencil = Pencil(durability=4)
 
+        pencil.write("text")
+        pencil.sharpen()
+        pencil.write("text")
+
+        self.assertEqual("texttext", pencil.read())

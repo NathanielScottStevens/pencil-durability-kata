@@ -21,3 +21,6 @@ class Pencil:
 
     def read(self):
         return self.paper
+
+    def sharpen(self):
+        self.point = self.durability
