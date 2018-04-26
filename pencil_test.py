@@ -64,3 +64,11 @@ class PencilTest(unittest.TestCase):
             pencil.sharpen()
 
         self.assertEqual("tex ", pencil.read())
+
+    def test_when_pencil_erases_it_should_remove_last_occurrence_of_word(self):
+        pencil = Pencil()
+
+        pencil.write("I say I say I say how can you say that")
+        pencil.erase("say")
+
+        self.assertEqual("I say I say I say how can you     that", pencil.read())

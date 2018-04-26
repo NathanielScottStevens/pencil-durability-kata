@@ -28,3 +28,11 @@ class Pencil:
             self.point = self.durability
 
         self.length -= 1
+
+    def erase(self, text):
+        partition = self.paper.rpartition(text)
+        self.paper = partition[0] + (' ' * len(text)) + partition[2]
+
+
+
+
