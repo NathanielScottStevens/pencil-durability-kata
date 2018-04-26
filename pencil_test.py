@@ -35,3 +35,16 @@ class PencilTest(unittest.TestCase):
         pencil.write("text")
         self.assertEqual("te  ", pencil.read())
 
+    def test_when_pencil_writes_uppercase_letters_it_should_degrade_by_two(self):
+        pencil = Pencil(durability=4)
+        pencil.write("Text")
+        self.assertEqual("Tex ", pencil.read())
+
+    def test_when_pencil_writes_whitespace_it_should_not_degrade(self):
+        pencil = Pencil(durability=14)
+        text = """text on 
+                  two lines"""
+        pencil.write(text)
+        self.assertEqual(text, pencil.read())
+
+

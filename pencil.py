@@ -5,11 +5,17 @@ class Pencil:
         self.durability = durability
         self.point = durability
 
+    def _dull_point(self, character):
+        if character.islower():
+            self.point -= 1
+        elif character.isupper():
+            self.point -= 2
+
     def write(self, text):
-        for c in text:
+        for character in text:
             if self.point > 0:
-                self.paper += c
-                self.point -= 1
+                self.paper += character
+                self._dull_point(character)
             else:
                 self.paper += ' '
 
