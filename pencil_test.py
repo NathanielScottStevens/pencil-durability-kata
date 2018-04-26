@@ -55,3 +55,12 @@ class PencilTest(unittest.TestCase):
         pencil.write("text")
 
         self.assertEqual("texttext", pencil.read())
+
+    def test_pencil_cannot_be_sharpened_past_its_length(self):
+        pencil = Pencil(durability=1, length=2)
+
+        for c in "text":
+            pencil.write(c)
+            pencil.sharpen()
+
+        self.assertEqual("tex ", pencil.read())

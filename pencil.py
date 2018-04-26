@@ -1,9 +1,10 @@
 class Pencil:
 
-    def __init__(self, durability=100):
+    def __init__(self, durability=100, length=5):
         self.paper = ""
         self.durability = durability
         self.point = durability
+        self.length = length
 
     def _dull_point(self, character):
         if character.islower():
@@ -23,4 +24,7 @@ class Pencil:
         return self.paper
 
     def sharpen(self):
-        self.point = self.durability
+        if self.length > 0:
+            self.point = self.durability
+
+        self.length -= 1
