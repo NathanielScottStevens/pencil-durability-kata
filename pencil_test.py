@@ -97,3 +97,11 @@ class PencilTest(unittest.TestCase):
         pencil.edit("onion")
 
         self.assertEqual("An onion a day keeps the doctor away", pencil.read())
+
+    def test_when_new_word_is_too_long_it_should_replace_characters_with_at_symbol(self):
+        pencil = Pencil()
+
+        pencil.write("An       a day keeps the doctor away")
+        pencil.edit("artichoke")
+
+        self.assertEqual("An artich@k@ay keeps the doctor away", pencil.read())

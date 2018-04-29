@@ -52,5 +52,7 @@ class Pencil:
            self._paper = self._replace_character(self._paper, character, edit_position + index)
 
     def _replace_character(self, text, character, position):
-        return text[:position] + character + text[position + 1:]
-
+        if text[position].isspace():
+            return text[:position] + character + text[position + 1:]
+        else:
+            return text[:position] + '@' + text[position + 1:]
