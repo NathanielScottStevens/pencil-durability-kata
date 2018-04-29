@@ -42,14 +42,16 @@ class Pencil:
     def sharpen(self):
         if self.length > 0:
             self._point = self.point_durability
-
-        self.length -= 1
+            self.length -= 1
 
     def edit(self, text):
-        edit_position = self._paper.index('  ') + 1
+        edit_position = self._find_first_blank_word_position(self._paper)
 
         for index, character in enumerate(text):
            self._paper = self._replace_character(self._paper, character, edit_position + index)
+
+    def _find_first_blank_word_position(self, text):
+        return text.index('  ') + 1
 
     def _replace_character(self, text, character, position):
         new_character = character

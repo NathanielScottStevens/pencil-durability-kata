@@ -4,7 +4,7 @@ from pencil import Pencil
 
 class PencilTest(unittest.TestCase):
 
-    def test_should_write_text(self):
+    def test_pencil_should_write_text(self):
         pencil = Pencil()
 
         text = "What possessed the first man to ride a horse?"
@@ -41,9 +41,9 @@ class PencilTest(unittest.TestCase):
         self.assertEqual("Tex ", pencil.read())
 
     def test_when_pencil_writes_whitespace_it_should_not_degrade(self):
-        pencil = Pencil(point_durability=14)
-        text = """text on 
-                  two lines"""
+        pencil = Pencil(point_durability=4)
+        text = """a b 
+                  c d"""
         pencil.write(text)
         self.assertEqual(text, pencil.read())
 
@@ -91,7 +91,7 @@ class PencilTest(unittest.TestCase):
 
         self.assertEqual("I am related to Buffalo     ", pencil.read())
 
-    def test_erasing_should_erase_opposite_of_the_written_order(self):
+    def test_erasing_should_erase_opposite_direction_of_the_written_order(self):
         pencil = Pencil(eraser_durability=3)
 
         pencil.write("I am related to Buffalo Bill")
