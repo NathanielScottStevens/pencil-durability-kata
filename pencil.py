@@ -30,12 +30,12 @@ class Pencil:
         partition = self._paper.rpartition(text)
         erased_text = ''
 
-        for character in text:
+        for character in reversed(text):
             if self.eraser_durability > 0:
-                erased_text += ' '
+                erased_text = ' ' + erased_text
                 self.eraser_durability -= 1
             else:
-                erased_text += character
+                erased_text = character + erased_text
 
         self._paper = partition[0] + erased_text + partition[2]
 

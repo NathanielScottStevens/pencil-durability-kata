@@ -81,3 +81,11 @@ class PencilTest(unittest.TestCase):
         pencil.erase("Buffalo")
 
         self.assertEqual("I am related to Buffalo     ", pencil.read())
+
+    def test_erasing_should_erase_opposite_of_the_written_order(self):
+        pencil = Pencil(eraser_durability=3)
+
+        pencil.write("I am related to Buffalo Bill")
+        pencil.erase("Bill")
+
+        self.assertEqual("I am related to Buffalo B   ", pencil.read())
