@@ -89,3 +89,11 @@ class PencilTest(unittest.TestCase):
         pencil.erase("Bill")
 
         self.assertEqual("I am related to Buffalo B   ", pencil.read())
+
+    def test_editing_should_replace_erased_word_with_new_text(self):
+        pencil = Pencil()
+
+        pencil.write("An       a day keeps the doctor away")
+        pencil.edit("onion")
+
+        self.assertEqual("An onion a day keeps the doctor away", pencil.read())

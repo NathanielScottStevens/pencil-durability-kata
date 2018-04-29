@@ -27,17 +27,17 @@ class Pencil:
         return self._paper
 
     def erase(self, text):
-        partition = self._paper.rpartition(text)
+        left_of_word, word, right_of_word = self._paper.rpartition(text)
         erased_text = ''
 
-        for character in reversed(text):
-            if self.eraser_durability > 0:
+        for character in reversed(word):
+            if self._eraser > 0:
                 erased_text = ' ' + erased_text
-                self.eraser_durability -= 1
+                self._eraser -= 1
             else:
                 erased_text = character + erased_text
 
-        self._paper = partition[0] + erased_text + partition[2]
+        self._paper = left_of_word + erased_text + right_of_word
 
     def sharpen(self):
         if self.length > 0:
@@ -45,6 +45,12 @@ class Pencil:
 
         self.length -= 1
 
+    def edit(self, text):
+        edit_position = self._paper.index('  ') + 1
 
+        for index, character in enumerate(text):
+           self._paper = self._replace_character(self._paper, character, edit_position + index)
 
+    def _replace_character(self, text, character, position):
+        return text[:position] + character + text[position + 1:]
 
