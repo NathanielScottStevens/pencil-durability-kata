@@ -73,6 +73,15 @@ class PencilTest(unittest.TestCase):
 
         self.assertEqual("I say I say I say how can you     that", pencil.read())
 
+    def test_when_the_word_to_be_erased_is_not_found_nothing_should_be_erased(self):
+        pencil = Pencil()
+
+        text = "Nothing to erase here"
+        pencil.write(text)
+        pencil.erase("Something")
+
+        self.assertEqual(text, pencil.read())
+
     def test_when_pencil_eraser_degrades_fully_it_should_stop_erasing(self):
         pencil = Pencil(eraser_durability=4)
 
