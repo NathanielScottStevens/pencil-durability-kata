@@ -48,13 +48,19 @@ class Pencil:
         edit_position = self._find_first_blank_word_position(self._paper)
 
         for index, character in enumerate(text):
-           self._paper = self._replace_character(self._paper, character, edit_position + index)
+            current_edit_position = edit_position + index
+
+            if current_edit_position >= len(self._paper):
+                self._paper += character
+            else:
+                self._paper = self._replace_character(self._paper, character, current_edit_position)
 
     def _find_first_blank_word_position(self, text):
         return text.index('  ') + 1
 
     def _replace_character(self, text, character, position):
         new_character = character
+
         if text[position].isalpha():
             new_character = '@'
 

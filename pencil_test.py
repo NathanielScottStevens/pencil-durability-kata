@@ -114,3 +114,12 @@ class PencilTest(unittest.TestCase):
         pencil.edit("artichoke")
 
         self.assertEqual("An artich@k@ay keeps the doctor away", pencil.read())
+
+    def test_when_new_word_goes_beyond_end_of_paper_it_should_be_appended_to_the_end(self):
+        pencil = Pencil()
+
+        pencil.write("A short phrase")
+        pencil.erase("phrase")
+        pencil.edit("sentence")
+
+        self.assertEqual("A short sentence", pencil.read())
