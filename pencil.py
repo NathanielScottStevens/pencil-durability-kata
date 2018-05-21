@@ -1,3 +1,4 @@
+#! /usr/bin/env python3.6
 class Pencil:
 
     def __init__(self, point_durability=100, eraser_durability=100, length=5):
