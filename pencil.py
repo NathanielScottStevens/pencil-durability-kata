@@ -27,9 +27,6 @@ class Pencil:
         elif character.isupper():
             self._point -= 2
 
-    def read(self):
-        return self._paper
-
     def erase(self, text):
         left_of_word, word, right_of_word = self._paper.rpartition(text)
         erased_text = ''
@@ -48,16 +45,19 @@ class Pencil:
             self._point = self.point_durability
             self.length -= 1
 
-    def edit(self, text):
-        edit_position = self._find_first_blank_word_position(self._paper)
+    def edit(self, paper, text):
+        new_text = paper.read()
+        edit_position = self._find_first_blank_word_position(new_text)
 
         for index, character in enumerate(text):
             current_edit_position = edit_position + index
 
-            if current_edit_position >= len(self._paper):
-                self._paper += character
+            if current_edit_position >= len(new_text):
+                new_text += character
             else:
-                self._paper = self._replace_character(self._paper, character, current_edit_position)
+                new_text = self._replace_character(new_text, character, current_edit_position)
+
+        paper.write(new_text)
 
     def _find_first_blank_word_position(self, text):
         return text.index('  ') + 1

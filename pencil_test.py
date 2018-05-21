@@ -109,7 +109,7 @@ class PencilTest(unittest.TestCase):
         pencil = Pencil()
 
         pencil.write(self.paper, "An       a day keeps the doctor away")
-        pencil.edit("onion")
+        pencil.edit(self.paper, "onion")
 
         self.assertEqual("An onion a day keeps the doctor away", self.paper.read())
 
@@ -117,7 +117,7 @@ class PencilTest(unittest.TestCase):
         pencil = Pencil()
 
         pencil.write(self.paper, "An       a day keeps the doctor away")
-        pencil.edit("artichoke")
+        pencil.edit(self.paper, "artichoke")
 
         self.assertEqual("An artich@k@ay keeps the doctor away", self.paper.read())
 
@@ -126,6 +126,6 @@ class PencilTest(unittest.TestCase):
 
         pencil.write(self.paper, "A short phrase")
         pencil.erase("phrase")
-        pencil.edit("sentence")
+        pencil.edit(self.paper, "sentence")
 
         self.assertEqual("A short sentence", self.paper.read())
