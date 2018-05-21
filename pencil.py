@@ -6,17 +6,20 @@ class Pencil:
         self.eraser_durability = eraser_durability
         self.length = length
 
-        self._paper = ""
         self._eraser = eraser_durability
         self._point = point_durability
 
-    def write(self, text):
+    def write(self, paper, text):
+        new_text = paper.read()
+
         for character in text:
             if self._point > 0:
-                self._paper += character
+                new_text += character
                 self._dull_point(character)
             else:
-                self._paper += ' '
+                new_text += ' '
+
+        paper.write(new_text)
 
     def _dull_point(self, character):
         if character.islower():
