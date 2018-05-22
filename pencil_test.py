@@ -53,6 +53,15 @@ class PencilTest(unittest.TestCase):
         pencil.write(self.paper, text)
         self.assertEqual(text, self.paper.read())
 
+    """
+    First off, this was definitely a bad test before since I missed adding
+    in that last space to the expected string.
+    However, I feel like the assertion you're hinting towards is something with the essence of:
+    self.assertEqual(4, pencil._point)
+    Which would be much simpler. I've done it this way to ensure that I'm 
+    testing behaviour not implementation. But I could be pushing that rule
+    too far. Interested to hear your thinking on it.
+    """
     def test_when_pencil_is_sharpened_it_regains_full_durability(self):
         pencil = Pencil(point_durability=4)
 

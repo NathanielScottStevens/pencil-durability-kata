@@ -1,7 +1,16 @@
 #! /usr/bin/env python3.6
+
 from eraser import Eraser
 
+'''
+I normally do not comment up my code based on the advice
+of the clean code manifesto. However, for ease of kata review,
+I'm commenting the hell out of this.
 
+Also, please don't hear any of my comments as being confrontational
+or something of the like. I'm just starved for these types of conversations
+in my current job and I'm dumping it all into this kata...sorry.
+'''
 class Pencil:
 
     def __init__(self, point_durability=100, length=5, eraser=Eraser(durability=100)):
