@@ -55,12 +55,18 @@ class PencilTest(unittest.TestCase):
 
     """
     First off, this was definitely a bad test before since I missed adding
-    in that last space to the expected string.
+    in that last space to the expected string and a phenomenal catch on your part.
+    
     However, I feel like the assertion you're hinting towards is something with the essence of:
     self.assertEqual(4, pencil._point)
     Which would be much simpler. I've done it this way to ensure that I'm 
-    testing behaviour not implementation. But I could be pushing that rule
-    too far. Interested to hear your thinking on it.
+    testing behaviour not implementation. If you write these tests in any other
+    way then they become more brittle and would potentially require the
+    tests to be rewritten in order to refactor. If a required feature was to
+    get the current wear on the eraser/pencil then this would, of course, become moot.
+    
+    However, if indeed this is insufficient to fully test the behaviour then that's
+    a grave concern. I'm not seeing that but would love an example!
     """
     def test_when_pencil_is_sharpened_it_regains_full_durability(self):
         pencil = Pencil(point_durability=4)
