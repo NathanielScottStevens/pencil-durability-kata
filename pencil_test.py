@@ -71,40 +71,6 @@ class PencilTest(unittest.TestCase):
 
         self.assertEqual("tex ", self.paper.read())
 
-    def test_when_pencil_erases_it_should_remove_last_occurrence_of_word(self):
-        pencil = Pencil()
-
-        pencil.write(self.paper, "I say I say I say how can you say that")
-        pencil.erase("say")
-
-        self.assertEqual("I say I say I say how can you     that", self.paper.read())
-
-    def test_when_the_word_to_be_erased_is_not_found_nothing_should_be_erased(self):
-        pencil = Pencil()
-
-        text = "Nothing to erase here"
-        pencil.write(self.paper, text)
-        pencil.erase("Something")
-
-        self.assertEqual(text, self.paper.read())
-
-    def test_when_pencil_eraser_degrades_fully_it_should_stop_erasing(self):
-        pencil = Pencil(eraser_durability=4)
-
-        pencil.write(self.paper, "I am related to Buffalo Bill")
-        pencil.erase("Bill")
-        pencil.erase("Buffalo")
-
-        self.assertEqual("I am related to Buffalo     ", self.paper.read())
-
-    def test_erasing_should_erase_opposite_direction_of_the_written_order(self):
-        pencil = Pencil(eraser_durability=3)
-
-        pencil.write(self.paper, "I am related to Buffalo Bill")
-        pencil.erase("Bill")
-
-        self.assertEqual("I am related to Buffalo B   ", self.paper.read())
-
     def test_editing_should_replace_erased_word_with_new_text(self):
         pencil = Pencil()
 
@@ -125,7 +91,7 @@ class PencilTest(unittest.TestCase):
         pencil = Pencil()
 
         pencil.write(self.paper, "A short phrase")
-        pencil.erase("phrase")
+        pencil.erase(self.paper, "phrase")
         pencil.edit(self.paper, "sentence")
 
         self.assertEqual("A short sentence", self.paper.read())

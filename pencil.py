@@ -1,12 +1,14 @@
 #! /usr/bin/env python3.6
+from eraser import Eraser
+
+
 class Pencil:
 
-    def __init__(self, point_durability=100, eraser_durability=100, length=5):
+    def __init__(self, point_durability=100, length=5, eraser=Eraser(durability=100)):
         self.point_durability = point_durability
-        self.eraser_durability = eraser_durability
         self.length = length
+        self.eraser = eraser
 
-        self._eraser = eraser_durability
         self._point = point_durability
 
     def write(self, paper, text):
@@ -27,18 +29,8 @@ class Pencil:
         elif character.isupper():
             self._point -= 2
 
-    def erase(self, text):
-        left_of_word, word, right_of_word = self._paper.rpartition(text)
-        erased_text = ''
-
-        for character in reversed(word):
-            if self._eraser > 0:
-                erased_text = ' ' + erased_text
-                self._eraser -= 1
-            else:
-                erased_text = character + erased_text
-
-        self._paper = left_of_word + erased_text + right_of_word
+    def erase(self, paper, text):
+        self.eraser.erase(paper, text)
 
     def sharpen(self):
         if self.length > 0:
