@@ -26,6 +26,8 @@ class Paper:
     just using a more traditional getter 
     and setter (since that's what it is). Somehow this seems a tad more semantic
     though it also seems strange in a different light.
+    Or perhaps, I should go with the more pythonic approach of not using getters
+    and setters at all but, I don't know, that's still hard for me.
     Thoughts!?
     """
     def write(self, text):
